@@ -12,9 +12,9 @@
          <a aria-label="My Linkedin" target="_blank" href="https://linkedin.com/in/{{site.gplus_username}}"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
          <a aria-label="My Twitter" target="_blank" href="https://twitter.com/{{site.twitter_username}}"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
        </div>
-       <a class="link" href="{{ "#about" | absolute_url }}" data-scroll>About Me</a>
-       <a class="link" href="{{ "#projects" | absolute_url }}" data-scroll>Projects</a>
-       <a class="link" href="{{ "https://medium.com/@ing.javidiaz" | relative_url }}" target="_blank">Blog</a>
+       <a class="link" href="{{ "#about" if "#about" startswith "#" else site.baseurl | prepend: "#about" }}" data-scroll>About Me</a>
+       <a class="link" href="{{ "#projects" if "#projects" startswith "#" else site.baseurl | prepend: "#projects" }}" data-scroll>Projects</a>
+       <a class="link" href="{{ "https://medium.com/@ing.javidiaz" if "https://medium.com/@ing.javidiaz" startswith "http" else site.baseurl | prepend: "https://medium.com/@ing.javidiaz" }}" target="_blank">Blog</a>
    </div>
    <a class="down" id ="downArrow" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
  </div>
