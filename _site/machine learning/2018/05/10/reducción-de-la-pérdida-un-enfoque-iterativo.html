@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Reducción de la pérdida: Un enfoque iterativo</title>
+  <meta name="description" content="This is my Portfolio using GitHub Pages">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/img/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicon-16x16.png">
+  <link rel="manifest" href="/assets/img/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/img/ms-icon-144x144.png">
+  <meta name="theme-color" content="#2f4f4f">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+</head>
+
+  <body>
+      <div id="particles-js">
+   <div class="content" itemscope itemtype="http://schema.org/Person">
+       <h1>
+         <span class="site-title" itemprop="name" >
+            <a style="text-decoration:none;color:#fff">Camilo Diaz Salinas</a>
+          </span>
+         <span class="site-description" id="site-desc" itemprop="jobTitle" >Data Engineer • Data Scientist • ML Engineer</span>
+       </h1>
+       <div class="icons-header">
+         <a aria-label="Send email" href="mailto:ing.javidiaz@gmail.com"><i class="icon fa fa-envelope"></i></a>
+         <a aria-label="My Github" target="_blank" href="https://github.com/JavierdiazS"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
+         <a aria-label="My Linkedin" target="_blank" href="https://linkedin.com/in/"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
+         <a aria-label="My Twitter" target="_blank" href="https://twitter.com/camilodiazs_"><i class="icon fa fa-twitter" aria-hidden="true"></i></a>
+       </div>
+       <a class="link" href="#about" data-scroll>About Me</a>
+       <a class="link" href="#projects" data-scroll>Projects</a>
+       <a class="link" href="https://medium.com/@ing.javidiaz" target="_blank">Blog</a>
+   </div>
+   <a class="down" id ="downArrow" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
+ </div>
+
+      <br>
+      <br>
+      <section id="blog">
+        <div class="container">
+            <style>
+    img{
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+<div class="container">
+  <h2 class="spacing">Reducción de la pérdida: un enfoque iterativo</h2>
+
+  <div class="blog-post spacing">
+    <p class="summary"><small><a class="decorate" href="/category/Machine Learning">Machine Learning</a></small><span class="small u-pull-right"><small>May 10, 2018</small></span></p>
+    <p>En el módulo anterior, se presentó el concepto de pérdida. Aquí, aprenderás cómo un modelo de aprendizaje automático reduce la pérdida de manera iterativa.</p>
+
+<p>Es posible que el aprendizaje iterativo te recuerde el juego infantil en el que los objetos estaban fríos o calientes (cerca o lejos) al intentar encontrar un elemento escondido, como un dedal. En este juego, el “objeto escondido” es el mejor modelo posible. Primero te arriesgarás a adivinar (“El valor de W1 es 0”.) y esperarás a que el sistema te indique cuál es la pérdida. Luego, intentarás adivinar otra vez (“El valor de W1 es 0.5”.) y verás cuál es la pérdida. Bien, ya estás más cerca. En realidad, si juegas a este juego correctamente, por lo general siempre estarás más cerca. El verdadero truco del juego es intentar buscar el mejor modelo posible de la manera más eficaz posible.</p>
+
+<p>La siguiente figura sugiere el proceso iterativo de prueba y error que usan los algoritmos de aprendizaje automático para entrenar un modelo:</p>
+
+<p><img src="/uploads/screenshot-2018-5-10-reducción-de-la-pérdida-un-enfoque-iterativo-curso-intensivo-de-aprendizaje-automático-google-developers.png" alt="" /></p>
+
+<p>Figura 1. Un enfoque iterativo para entrenar un modelo.</p>
+
+<p>Usaremos este mismo enfoque iterativo durante todo el Curso intensivo de aprendizaje automático y detallaremos distintas complicaciones, particularmente dentro de la tormentosa nube azul. Las estrategias iterativas prevalecen en aprendizaje automático, principalmente debido a que se ajustan muy bien a la escala de los conjuntos de datos de gran tamaño.</p>
+
+<p>El “modelo” toma uno o más atributos como entrada y devuelve una predicción (y’) como resultado. Para simplificar, considera un modelo que toma un atributo y devuelve una predicción:</p>
+
+<p><img src="/uploads/screenshot-2018-5-10-reducción-de-la-pérdida-un-enfoque-iterativo-curso-intensivo-de-aprendizaje-automático-google-developers1.png" alt="" /></p>
+
+<p>¿Qué valores iniciales deberíamos establecer para B y W1? Para la regresión lineal, los valores de inicio no son importantes. Podríamos elegir valores al azar, pero tomaremos los siguientes valores triviales en su lugar:</p>
+
+<p>B = 0</p>
+
+<p>W1 = 0</p>
+
+<p>Supón que el primer valor del atributo es 10. Al vincular ese valor con el atributo de predicción, se obtiene lo siguiente:</p>
+
+<p>  y’ = 0 + 0(10)<br />  y’ = 0</p>
+
+<p>La parte de “Cálculo de pérdida” del diagrama es la función de pérdida que usará el modelo. Supón que usamos la función de pérdida al cuadrado. La función de pérdida incorpora dos valores de entrada:</p>
+
+<p>y’: la predicción del modelo para los atributos x</p>
+
+<p>y: la etiqueta correcta correspondiente a los atributos x.</p>
+
+<p>Finalmente, llegamos a la parte de “Actualizar parámetros” del diagrama. Aquí, el sistema de aprendizaje automático examina el valor de la función de pérdida y genera valores nuevos para B y W1. Por el momento, simplemente supón que el cuadro verde misterioso traza valores nuevos y, luego, el sistema de aprendizaje automático vuelve a evaluar todos esos atributos con todas las etiquetas; se obtiene un nuevo valor para la función de pérdida, que genera valores de parámetros nuevos. El aprendizaje continúa iterando hasta que el algoritmo descubre los parámetros del modelo con la pérdida más baja posible. En general, iteras hasta que la pérdida general deja de cambiar o, al menos, cambia muy lentamente. Cuando eso ocurre, decimos que el modelo ha <strong>convergido</strong>.</p>
+
+<h6 id="punto-clave"><em>Punto clave:</em></h6>
+
+<h6 id="un-modelo-de-aprendizaje-automático-se-entrena-comenzando-con-una-hipótesis-inicial-para-los-pesos-y-sesgo-y-de-manera-iterativa-ajustar-esas-hipótesis-hasta-que-se-aprenden-las-ponderaciones-y-ordenadas-al-origen-con-la-pérdida-más-baja-posible"><em>Un modelo de aprendizaje automático se entrena comenzando con una hipótesis inicial para los pesos y sesgo, y de manera iterativa ajustar esas hipótesis hasta que se aprenden las ponderaciones y ordenadas al origen con la pérdida más baja posible.</em></h6>
+
+  </div>
+  <hr class="hr-text" data-content="END">
+  <div class="PageNavigation">
+      
+        <a class="prev decorate" href="/machine%20learning/2018/05/10/entrenamiento-y-p%C3%A9rdida.html">&laquo; Entrenamiento y pérdida</a>
+      
+      
+        <a class="next decorate" href="/machine%20learning/2018/05/10/regresi%C3%B3n-lineal.html">Regresión lineal &raquo;</a>
+      
+    </div>
+</div>
+
+        </div>    
+        <head>
+</head>
+<body>
+<div class="container">
+    <div class="user-details">
+        <br>
+        <img id="photo" alt="photo" src="https://i.postimg.cc/rm6S3mBs/data.jpg" style="border-radius: 50%;">
+        <br>
+        <h3>Camilo Diaz Salinas</h3>
+        <h5>Data Engineer &#8226; Data Scientist &#8226; ML Engineer &#8226; AWS &#8226; Azure &#8226; Electronic Engineer</h5>
+        <h6>I always keep in constant learning and evolution<br><small>When there's a will there's a way ⛩️</small></h6>
+    </div>
+</div>
+
+      </section>   
+      <footer class="footer"><p> <a class="button" href="/certificates.html"> <i class="devicon-redis-plain" style="color:#ffd700;"></i> &nbsp;Certificates </a> <a class="button" href="https://github.com/JavierdiazS?tab=repositories" target="_blank"> <i class="devicon-github-plain"></i> &nbsp;Projects </a></p><p>&copy; Camilo Diaz Salinas 2024 | Build with <i class="fa fa-heart" style="color:#ef0000;" aria-hidden="true"></i> </p> </footer> <script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> <script src="/assets/js/sweet-scroll.min.js"></script> <script src="/assets/js/main.js"></script> <!-- Google Analytics -->
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-98210758-2', 'auto');
+ga('send', 'pageview');
+</script>
+
+
+
+      <script>
+          document.getElementById("site-desc").innerHTML = "Personal Blog";
+          document.getElementById("downArrow").href = "#blog";
+      </script>
+  </body>
